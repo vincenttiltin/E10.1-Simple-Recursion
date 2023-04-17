@@ -95,7 +95,16 @@ public class Recursion {
 		 * 4. Concatenate the left and right arrays and return the result.
 		 */
 
-		return elements;
+		if( end - start == 1)
+		{
+			return Arrays.copyOfRange(elements, start, start +1);
+		}
+
+		int mid = (start + end) / 2;
+		T[] left = slice(elements, start, mid);
+		T[] right = slice(elements, mid, end);
+
+		return concatenateArrays(left, right);
 	}
 
 	/**
