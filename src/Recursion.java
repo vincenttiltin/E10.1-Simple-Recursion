@@ -3,31 +3,74 @@ import java.util.Arrays;
 public class Recursion {
 
 	public static int factorial(int n) {
-		return 0;
+		if(n == 0)
+		return 1;
+
+		else {
+			return n * factorial(n-1);
+		}
 	}
 
-	public static boolean isEven(int n) {
+	public static boolean isEven(int n)
+	{
+		if(n == 1)
 		return false;
+
+		else if(n ==0)
+		return true;
+
+		else {
+			n = n - 2;
+			return isEven(n);
+		}
 	}
 
-	public static int sum(int[] numbers) {
+	public static int sum(int[] numbers)
+	{
 		return sum(numbers, 0);
 	}
 
-	private static int sum(int[] numbers, int index) {
-		return 0;
+	private static int sum(int[] numbers, int index)
+	{
+		if(index > numbers.length -1) return 0;
+
+		int num =numbers[index];
+		return num + sum(numbers, index +1);
+
 	}
 
-	public static int max(int[] numbers) {
+	public static int max(int[] numbers)
+	{
 		return max(numbers, 0);
 	}
 
-	private static int max(int[] numbers, int index) {
-		return 0;
+	private static int max(int[] numbers, int index)
+	{
+		if (index > numbers.length - 1) return 0;
+
+		int max = max(numbers, index + 1);
+
+		return Math.max(numbers[index], max);
+
 	}
 
-	public static boolean isPalindrome(String phrase) {
-		return false;
+	public static boolean isPalindrome(String phrase)
+	{
+		if(phrase.length() == 1 || phrase.length() == 0)
+			return true;
+
+		else {
+			phrase = phrase.replaceAll(" ","");
+			char[] letters = phrase.toCharArray();
+
+			if(letters[0] == letters[letters.length - 1])
+			{
+				phrase = phrase.substring(1, phrase.length()- 1);
+				 return isPalindrome(phrase);
+			}
+
+			return false;
+		}
 	}
 
 	/**
